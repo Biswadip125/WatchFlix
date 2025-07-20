@@ -1,15 +1,15 @@
 const express = require("express");
 const router = express.Router();
+const multer = require("multer");
 const {
   registerUser,
   loginUser,
   logoutUser,
 } = require("../controller/authController");
 
-const isLoggedIn = require("../middlewares/isLoggedIn");
-const upload = require("../config/multerConfig");
-const userModel = require("../models/user.model");
-const { generateToken } = require("../utils/generateToken");
+const isLoggedIn = require("../middlewares/isLoggedIn.js");
+const { editDetails } = require("../controller/editController.js");
+const upload = multer({ storage: multer.memoryStorage() });
 
 router.get("/", (req, res) => {
   res.send("hello this default page");
@@ -21,46 +21,7 @@ router.post("/login", loginUser);
 
 router.get("/logout", isLoggedIn, logoutUser);
 
-router.post("/edit", isLoggedIn, upload.single("file"), async (req, res) => {
-  const { fullname, email } = req.body;
-
-  if (!fullname || !email) {
-    return res.status(400).json({
-      message: "Invalid data",
-      success: false,
-    });
-  }
-  if (!req.file) {
-    return res.status(400).json({
-      message: "File is required",
-      success: false,
-    });
-  }
-  try {
-    const updatedUser = await userModel.findOneAndUpdate(
-      { _id: req.user.userId },
-      { fullname, email, picture: req.file.filename },
-      { new: true }
-    );
-    if (!updatedUser) {
-      return res.status(404).json({
-        message: "User not found",
-        success: false,
-      });
-    }
-    const token = generateToken(updatedUser);
-    return res.cookie("token", token).status(201).json({
-      message: "User details Update Successfully",
-      success: true,
-      updatedUser,
-    });
-  } catch (err) {
-    res.status(401).json({
-      message: "Something went wrong",
-      success: false,
-    });
-  }
-});
+router.post("/edit", isLoggedIn, upload.single("file"), editDetails);
 
 router.post("/addtowatchlist", isLoggedIn, async (req, res) => {
   try {

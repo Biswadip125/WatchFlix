@@ -1,5 +1,3 @@
-import React from "react";
-
 const WatchSkeleton = () => {
   return (
     <div className="animate-pulse">

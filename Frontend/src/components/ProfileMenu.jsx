@@ -1,14 +1,12 @@
 import axios from "axios";
-import React from "react";
 import toast from "react-hot-toast";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { API_END_POINT } from "../utils/constant";
 import { setUser } from "../redux/userSlice";
 import { setProfileMenuToggle } from "../redux/movieSlice";
 
 const ProfileMenu = () => {
-  const user = useSelector((store) => store.app.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();

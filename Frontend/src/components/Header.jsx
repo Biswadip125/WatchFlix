@@ -1,4 +1,4 @@
-import { API_END_POINT, BACKEND_IMAGE_URL } from "../utils/constant";
+import { API_END_POINT } from "../utils/constant";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -52,10 +52,10 @@ const Header = ({ buttonName, link }) => {
         id="header"
         className="fixed w-full z-30 transition duration-300 ease-in-out bg-gradient-to-b from-black via-black/70 to-transparent"
       >
-        <div className="container mx-auto px-12 py-4 flex items-center justify-between">
+        <div className="container mx-auto md:px-12 px-4 py-4 flex items-center justify-between">
           <div className="text-2xl font-bold">
             <img
-              src="/images/watchflix-logo.png"
+              src="https://ik.imagekit.io/qsm4jtc2a/Hero_and_logo_images/watchflix-logo.png"
               alt="watchflix_logo"
               className="h-10 mt-1"
             />
@@ -104,7 +104,7 @@ const Header = ({ buttonName, link }) => {
 
               <button className="border-4 border-transparent hover:border-gray-500/50 rounded-full">
                 <img
-                  src={`${BACKEND_IMAGE_URL}/${user.picture}`}
+                  src={user?.picture}
                   alt="Profile"
                   className="h-8 w-8 rounded-full "
                   onClick={profileMenuToggleHandler}
@@ -133,8 +133,8 @@ const Header = ({ buttonName, link }) => {
   );
 };
 Header.propTypes = {
-  buttonName: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
+  buttonName: PropTypes.string,
+  link: PropTypes.string,
 };
 
 export default Header;

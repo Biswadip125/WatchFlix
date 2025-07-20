@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Header from "./Header";
 import { useSelector } from "react-redux";
-import { BACKEND_IMAGE_URL } from "../utils/constant";
+
 import ProfileMenu from "./ProfileMenu";
 import Menu from "./Menu";
 import { useNavigate } from "react-router-dom";
@@ -38,7 +38,7 @@ const Profile = () => {
             <div className=" profileImage mt-4">
               <h2 className="text-2xl">Profile Picture</h2>
               <img
-                src={`${BACKEND_IMAGE_URL}/${user.picture} `}
+                src={user.picture}
                 alt="profile"
                 className="h-20 w-20 rounded-md mt-2 object-cover"
               />
