@@ -10,12 +10,17 @@ import PropTypes from "prop-types";
 import { LuLogOut } from "react-icons/lu";
 import { setSearchMovieDetails } from "../redux/searchSlice";
 import { IoMenu } from "react-icons/io5";
+import ProfileMenu from "./ProfileMenu";
+import { useEffect } from "react";
+import { useRef } from "react";
 
 const Header = ({ buttonName, link }) => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.app.user);
   const location = useLocation();
   const hideNavOnRoutes = ["/register", "/"];
+  const profileMenuRef = useRef(null);
+  const profileBtnRef = useRef(null);
   const dispatch = useDispatch();
 
   const toggleHandler = () => {
@@ -29,7 +34,11 @@ const Header = ({ buttonName, link }) => {
   const menuToggleHandler = () => {
     dispatch(setMenuToggle());
   };
+  const profileMenuToggle = useSelector(
+    (store) => store.movie.profileMenuToggle
+  );
 
+  console.log(profileMenuToggle);
   const logoutHandler = async () => {
     try {
       const res = await axios.get(`${API_END_POINT}/logout`, {
@@ -46,6 +55,32 @@ const Header = ({ buttonName, link }) => {
       toast.error(err.response.data.message);
     }
   };
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        profileMenuToggle &&
+        profileBtnRef.current &&
+        !profileBtnRef.current.contains(e.target) &&
+        profileMenuRef.current &&
+        !profileMenuRef.current.contains(e.target)
+      ) {
+        dispatch(setProfileMenuToggle());
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [profileMenuToggle, dispatch]);
+
+  useEffect(() => {
+    if (profileMenuToggle && profileBtnRef.current && profileMenuRef.current) {
+      const iconRect = profileBtnRef.current.getBoundingClientRect();
+      const menu = profileMenuRef.current;
+      menu.style.top = `${iconRect.bottom + 10}px`;
+      menu.style.left = `${iconRect.right - 160}px`; // adjust based on menu width
+    }
+  }, [profileMenuToggle]);
   return (
     <>
       <header
@@ -102,7 +137,10 @@ const Header = ({ buttonName, link }) => {
                 </svg>
               </Link>
 
-              <button className="border-4 border-transparent hover:border-gray-500/50 rounded-full">
+              <button
+                className="border-4 border-transparent hover:border-gray-500/50 rounded-full"
+                ref={profileBtnRef}
+              >
                 <img
                   src={user?.picture}
                   alt="Profile"
@@ -128,6 +166,7 @@ const Header = ({ buttonName, link }) => {
             </div>
           )}
         </div>
+        {profileMenuToggle && <ProfileMenu ref={profileMenuRef} />}
       </header>
     </>
   );

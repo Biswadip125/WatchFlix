@@ -9,7 +9,6 @@ import useTopRatedMovies from "../hooks/useTopRatedMovies";
 import useUpcomingMovies from "../hooks/useUpcomingMovies";
 import MovieContainer from "./MovieContainer";
 import useBackdropImages from "../hooks/useBackdropImages.js";
-import ProfileMenu from "./ProfileMenu.jsx";
 import { fetchWatchlist } from "../utils/fetchWatchlist.js";
 import Menu from "./Menu.jsx";
 
@@ -18,9 +17,6 @@ const Browse = () => {
 
   const navigate = useNavigate();
 
-  const profileMenuToggle = useSelector(
-    (store) => store.movie.profileMenuToggle
-  );
   const menuToggle = useSelector((store) => store.movie.menuToggle);
 
   const dispatch = useDispatch();
@@ -42,7 +38,6 @@ const Browse = () => {
   return (
     <div className="bg-black h-auto w-full  text-white relative">
       <Header />
-      {profileMenuToggle && <ProfileMenu />}
       {menuToggle && <Menu />}
       <Carousel interval={5000} />
       <MovieContainer />

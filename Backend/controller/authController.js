@@ -98,7 +98,8 @@ module.exports.logoutUser = (req, res) => {
         success: true,
       });
   } catch (err) {
-    return res.status(501).json({
+    console.log(err);
+    return res.status(500).json({
       message: "Something went wrong",
       success: false,
     });

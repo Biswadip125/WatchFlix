@@ -1,4 +1,3 @@
-import React from "react";
 import { RxCross2 } from "react-icons/rx";
 import { setMenuToggle } from "../redux/movieSlice";
 import { useDispatch } from "react-redux";

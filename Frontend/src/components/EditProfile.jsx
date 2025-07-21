@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Header from "./Header";
-import ProfileMenu from "./ProfileMenu";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { API_END_POINT } from "../utils/constant";
@@ -19,9 +18,6 @@ const EditProfile = () => {
       navigate("/");
     }
   });
-  const profileMenuToggle = useSelector(
-    (store) => store.movie.profileMenuToggle
-  );
 
   const menuToggle = useSelector((store) => store.movie.menuToggle);
 
@@ -60,7 +56,6 @@ const EditProfile = () => {
   return (
     <>
       <Header />
-      {profileMenuToggle && <ProfileMenu />}
       {menuToggle && <Menu />}
       <div className="w-full h-screen pt-20 md:pl-20 md:pr-20 pl-10 pr-10  bg-black/90 text-white">
         <div className="p-4">

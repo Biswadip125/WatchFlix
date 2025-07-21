@@ -10,7 +10,6 @@ import {
 
 import { setMoviesList, setTvShowsList } from "../redux/movieSlice";
 import MovieList from "./MovieList";
-import ProfileMenu from "./ProfileMenu";
 import Menu from "./Menu";
 
 const Watchlist = () => {
@@ -31,10 +30,6 @@ const Watchlist = () => {
   const moviesList = useSelector((store) => store.movie.moviesList);
 
   const tvShowsList = useSelector((store) => store.movie.tvShowsList);
-
-  const profileMenuToggle = useSelector(
-    (store) => store.movie.profileMenuToggle
-  );
 
   const menuToggle = useSelector((store) => store.movie.menuToggle);
 
@@ -107,7 +102,7 @@ const Watchlist = () => {
       } h-screen bg-black text-white`}
     >
       <Header />
-      {profileMenuToggle && <ProfileMenu />}
+
       {menuToggle && <Menu />}
       <div className="h-3/4 w-full pt-24 md:pl-24 md:pr-24 pl-10 pr-10">
         <h1 className="text-3xl font-bold">Watchlist : Movies & Tv Shows</h1>

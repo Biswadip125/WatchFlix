@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Header from "./Header";
 import Carousel from "./Carousel";
-import ProfileMenu from "./ProfileMenu";
 import Menu from "./Menu";
 import { useSelector } from "react-redux";
 import useBackdropImages from "../hooks/useBackdropImages";
@@ -14,9 +13,6 @@ import { useNavigate } from "react-router-dom";
 
 const TvShows = () => {
   const user = useSelector((store) => store.app.user);
-  const profileMenuToggle = useSelector(
-    (store) => store.movie.profileMenuToggle
-  );
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -35,7 +31,7 @@ const TvShows = () => {
   return (
     <div className="bg-black w-full h-auto text-white">
       <Header />
-      {profileMenuToggle && <ProfileMenu />}
+
       {menuToggle && <Menu />}
       <Carousel interval={5000} />
       <TvShowsContainer />

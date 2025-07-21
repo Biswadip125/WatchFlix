@@ -214,7 +214,6 @@ const Watch = () => {
         </button>
       </div>
       {menuToggle && <Menu />}
-      {profileMenuToggle && <ProfileMenu />}
     </div>
   );
 };

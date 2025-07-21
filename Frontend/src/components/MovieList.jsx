@@ -1,6 +1,6 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import MovieCard from "./MovieCard";
-import { GrBold, GrPrevious } from "react-icons/gr";
+import { GrPrevious } from "react-icons/gr";
 import { GrNext } from "react-icons/gr";
 
 const MovieList = ({ title, movies }) => {

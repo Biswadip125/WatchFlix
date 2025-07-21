@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { options, SEARCH_MOVIE_URL } from "../utils/constant";
 import { useDispatch, useSelector } from "react-redux";

@@ -9,6 +9,7 @@ const {
 
 const isLoggedIn = require("../middlewares/isLoggedIn.js");
 const { editDetails } = require("../controller/editController.js");
+const userModel = require("../models/user.model.js");
 const upload = multer({ storage: multer.memoryStorage() });
 
 router.get("/", (req, res) => {
@@ -19,7 +20,7 @@ router.post("/register", registerUser);
 
 router.post("/login", loginUser);
 
-router.get("/logout", isLoggedIn, logoutUser);
+router.get("/logout", logoutUser);
 
 router.post("/edit", isLoggedIn, upload.single("file"), editDetails);
 
