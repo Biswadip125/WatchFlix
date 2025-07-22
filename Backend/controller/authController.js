@@ -70,7 +70,12 @@ module.exports.loginUser = async (req, res) => {
         });
       }
       let token = generateToken(user);
-      res.cookie("token", token);
+      res.cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+        maxAge: 15 * 24 * 60 * 60 * 1000,
+      });
       res.status(201).json({
         message: `Welcome Back ${user.fullname}`,
         user,

@@ -26,7 +26,7 @@ app.use(cookieParser());
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Credentials", true);
-  res.header("Access-Control-Allow-Origin", "https://watch-flix-ten.vercel.app");
+  res.header("Access-Control-Allow-Origin", process.env.FRONTEND_APP_URL);
   res.header(
     "Access-Control-Allow-Methods",
     "GET, PUT, POST, DELETE, UPDATE, OPTIONS "
