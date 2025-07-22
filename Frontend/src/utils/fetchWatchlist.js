@@ -1,10 +1,10 @@
 import axios from "axios";
 import { setWatchlist } from "../redux/movieSlice";
-import { API_END_POINT } from "./constant";
 
+const BACKEND_API_URL = import.meta.env.VITE_BACKEND_API_URL;
 export const fetchWatchlist = async (dispatch) => {
   try {
-    const res = await axios.get(`${API_END_POINT}/watchlist`, {
+    const res = await axios.get(`${BACKEND_API_URL}/watchlist`, {
       headers: {
         "Content-type": "application/json",
       },

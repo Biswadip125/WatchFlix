@@ -1,5 +1,3 @@
-export const API_END_POINT = "https://watchflix-jgnh.onrender.com/api/v1/users";
-
 export const options = {
   method: "GET",
   headers: {

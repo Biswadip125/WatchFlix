@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Header from "./Header";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { API_END_POINT } from "../utils/constant";
 import toast from "react-hot-toast";
 import { setUser } from "../redux/userSlice";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +17,7 @@ const EditProfile = () => {
       navigate("/");
     }
   });
-
+  const BACKEND_API_URL = import.meta.env.VITE_BACKEND_API_URL;
   const menuToggle = useSelector((store) => store.movie.menuToggle);
 
   const [fullname, setFullName] = useState(user.fullname);
@@ -36,7 +35,7 @@ const EditProfile = () => {
     formData.append("file", file);
 
     try {
-      const res = await axios.post(`${API_END_POINT}/edit`, formData, {
+      const res = await axios.post(`${BACKEND_API_URL}/edit`, formData, {
         headers: {
           "Content-type": "multipart/form-data",
         },

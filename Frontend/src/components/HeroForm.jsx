@@ -1,6 +1,5 @@
 import { useState } from "react";
 import axios from "axios";
-import { API_END_POINT } from "../utils/constant";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,12 +14,14 @@ const HeroForm = ({ isLogin, link, apiLink, navigateLink }) => {
   const dispatch = useDispatch();
   const isLoading = useSelector((store) => store.app.isLoading);
 
+  const BACKEND_API_URL = import.meta.env.VITE_BACKEND_API_URL;
+
   const getInputData = async (e) => {
     e.preventDefault();
     dispatch(setLoading(true));
     const user = { fullname, email, password };
     try {
-      const res = await axios.post(`${API_END_POINT}/${apiLink}`, user, {
+      const res = await axios.post(`${BACKEND_API_URL}/${apiLink}`, user, {
         headers: {
           "Content-type": "application/json",
         },

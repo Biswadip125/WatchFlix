@@ -2,7 +2,6 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { API_END_POINT } from "../utils/constant";
 import { setUser } from "../redux/userSlice";
 import { setProfileMenuToggle } from "../redux/movieSlice";
 import { forwardRef } from "react";
@@ -11,10 +10,10 @@ const ProfileMenu = forwardRef((props, ref) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-
+  const BACKEND_API_URL = import.meta.env.VITE_BACKEND_API_URL;
   const profileMenulogoutHandler = async () => {
     try {
-      const res = await axios.get(`${API_END_POINT}/logout`, {
+      const res = await axios.get(`${BACKEND_API_URL}/logout`, {
         headers: { "Content-type": "application/json" },
         withCredentials: true,
       });

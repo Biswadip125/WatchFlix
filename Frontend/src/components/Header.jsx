@@ -1,4 +1,3 @@
-import { API_END_POINT } from "../utils/constant";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -23,6 +22,8 @@ const Header = ({ buttonName, link }) => {
   const profileBtnRef = useRef(null);
   const dispatch = useDispatch();
 
+  const BACKEND_API_URL = import.meta.env.VITE_BACKEND_API_URL;
+
   const toggleHandler = () => {
     dispatch(setSearchMovieDetails({ searchInputValue: "", movies: "" }));
   };
@@ -38,10 +39,9 @@ const Header = ({ buttonName, link }) => {
     (store) => store.movie.profileMenuToggle
   );
 
-  console.log(profileMenuToggle);
   const logoutHandler = async () => {
     try {
-      const res = await axios.get(`${API_END_POINT}/logout`, {
+      const res = await axios.get(`${BACKEND_API_URL}/logout`, {
         headers: {
           "Content-type": "application/json",
         },

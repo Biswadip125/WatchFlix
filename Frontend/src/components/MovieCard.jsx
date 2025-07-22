@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { API_END_POINT, Banner_URL } from "../utils/constant";
+import { useState } from "react";
+import { Banner_URL } from "../utils/constant";
 import { Link, useLocation } from "react-router-dom";
 
 import { IoMdAdd } from "react-icons/io";
@@ -18,6 +18,8 @@ const MovieCard = ({ movie }) => {
   if (!movie.poster_path) {
     return;
   }
+
+  const BACKEND_API_URL = import.meta.env.VITE_BACKEND_API_URL;
 
   const watchlist = useSelector((store) => store.movie.watchlist);
   const moviesList = useSelector((store) => store.movie.moviesList);
@@ -45,7 +47,7 @@ const MovieCard = ({ movie }) => {
 
   const fetchWatchlist = async (dispatch) => {
     try {
-      const res = await axios.get(`${API_END_POINT}/watchlist`, {
+      const res = await axios.get(`${BACKEND_API_URL}/watchlist`, {
         headers: {
           "Content-type": "application/json",
         },
@@ -63,7 +65,7 @@ const MovieCard = ({ movie }) => {
   const handleAddToWatchList = async () => {
     try {
       const res = await axios.post(
-        `${API_END_POINT}/addtowatchlist`,
+        `${BACKEND_API_URL}/addtowatchlist`,
         {
           id: movie.id,
           contentType: contentType,
@@ -88,7 +90,7 @@ const MovieCard = ({ movie }) => {
   const handleRemoveFromWatchlist = async () => {
     try {
       const res = await axios.post(
-        `${API_END_POINT}/deletefromwatchlist`,
+        `${BACKEND_API_URL}/deletefromwatchlist`,
         {
           id: movie.id,
           contentType: contentType,
