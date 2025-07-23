@@ -8,7 +8,7 @@ const Login = () => {
         isLogin={true}
         link={"/register"}
         apiLink={"login"}
-        navigateLink={"/browse"}
+        navigateLink={"/"}
       />
     </>
   );

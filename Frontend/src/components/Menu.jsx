@@ -20,7 +20,7 @@ const Menu = () => {
         <hr className="w-full border-1 border-t-gray-500/70" />
         <Link
           className=" h-16 pl-4 pt-2 flex items-center text-red-600"
-          to={"/browse"}
+          to={"/"}
           onClick={cancelMenuHandler}
         >
           Movies

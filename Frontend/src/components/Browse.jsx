@@ -21,20 +21,23 @@ const Browse = () => {
 
   const dispatch = useDispatch();
 
+  //my custom hooks
+  const { fetchBackdropImages } = useBackdropImages();
+  useNowPlayingMovies();
+  usePopularMovies();
+  useTopRatedMovies();
+  useUpcomingMovies();
+  fetchWatchlist(dispatch);
+
   useEffect(() => {
     if (!user) {
       navigate("/");
     }
   });
 
-  //my custom hooks
-  useNowPlayingMovies();
-  usePopularMovies();
-  useTopRatedMovies();
-  useUpcomingMovies();
-  useBackdropImages();
-  fetchWatchlist(dispatch);
-
+  useEffect(() => {
+    fetchBackdropImages();
+  }, [fetchBackdropImages]);
   return (
     <div className="bg-black h-auto w-full  text-white relative">
       <Header />

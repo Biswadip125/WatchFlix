@@ -15,18 +15,21 @@ const TvShows = () => {
   const user = useSelector((store) => store.app.user);
 
   const navigate = useNavigate();
+  const menuToggle = useSelector((store) => store.movie.menuToggle);
+  const { fetchBackdropImages } = useBackdropImages();
+  useAiringTodayTvshows();
+  useOnTheAirTvshows();
+  usePopularTvshows();
+  useTopRatedTvshows();
   useEffect(() => {
     if (!user) {
       navigate("/");
     }
   });
-  const menuToggle = useSelector((store) => store.movie.menuToggle);
 
-  useAiringTodayTvshows();
-  useOnTheAirTvshows();
-  usePopularTvshows();
-  useTopRatedTvshows();
-  useBackdropImages();
+  useEffect(() => {
+    fetchBackdropImages();
+  }, [fetchBackdropImages]);
 
   return (
     <div className="bg-black w-full h-auto text-white">

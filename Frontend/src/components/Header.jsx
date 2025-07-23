@@ -17,7 +17,7 @@ const Header = ({ buttonName, link }) => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.app.user);
   const location = useLocation();
-  const hideNavOnRoutes = ["/register", "/"];
+  const hideNavOnRoutes = ["/register", "/login"];
   const profileMenuRef = useRef(null);
   const profileBtnRef = useRef(null);
   const dispatch = useDispatch();
@@ -85,37 +85,39 @@ const Header = ({ buttonName, link }) => {
     <>
       <header
         id="header"
-        className="fixed w-full z-30 transition duration-300 ease-in-out bg-gradient-to-b from-black via-black/70 to-transparent"
+        className="absolute top-0 w-full z-50 bg-gradient-to-b from-black/70  to-transparent"
       >
-        <div className="container mx-auto md:px-12 px-4 py-4 flex items-center justify-between">
+        <div className="container mx-auto  lg:px-12 px-2 py-1 md:py-2 lg:py-3 flex items-center justify-between ">
           <div className="text-2xl font-bold">
-            <img
-              src="https://ik.imagekit.io/qsm4jtc2a/Hero_and_logo_images/watchflix-logo.png"
-              alt="watchflix_logo"
-              className="h-10 mt-1"
-            />
+            <Link to="/">
+              <img
+                src="https://ik.imagekit.io/qsm4jtc2a/Hero_and_logo_images/watchflix-logo.png"
+                alt="watchflix_logo"
+                className="md:h-10 h-6 cursor-pointer"
+              />
+            </Link>
           </div>
           {user && !hideNavOnRoutes.includes(location.pathname) && (
             <nav className="md:flex hidden space-x-8">
-              <a
-                href="/browse"
-                className="text-gray-300 font-semibold hover:text-white transition"
+              <Link
+                to="/"
+                className="text-gray-300 font-semibold hover:text-white transition cursor-pointer"
               >
                 Movies
-              </a>
-              <a
-                href="/tvshows"
+              </Link>
+              <Link
+                to="/tvshows"
                 className="text-gray-300 font-semibold
-                 hover:text-white transition"
+                 hover:text-white transition cursor-pointer"
               >
                 TV Shows
-              </a>
-              <a
-                href="/watchlist"
-                className="text-gray-300 font-semibold hover:text-white transition"
+              </Link>
+              <Link
+                to="/watchlist"
+                className="text-gray-300 font-semibold hover:text-white transition cursor-pointer"
               >
                 Watchlist
-              </a>
+              </Link>
             </nav>
           )}
           {user && !hideNavOnRoutes.includes(location.pathname) ? (

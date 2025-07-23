@@ -4,7 +4,7 @@ import { IoIosInformationCircleOutline } from "react-icons/io";
 import { BACKDROP_IMAGE_URL } from "../utils/constant";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+import PropTypes from "prop-types";
 const Carousel = ({ interval }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const slides = useSelector((store) => store.movie.backdropImages);
@@ -56,12 +56,12 @@ const Carousel = ({ interval }) => {
         <div className="absolute lg:top-10 lg:bottom-10 md:top-24 md:bottom-0 top-12 bottom-0 left-1 right-4 md:left-3 md:right-8 flex flex-col justify-center space-x-2 mb-4 z-20">
           <div className="max-w-xl md:max-w-2xl ml-2">
             <h1 className="text-xl md:text-4xl lg:text-5xl font-bold ">
-              {location.pathname === "/browse"
+              {location.pathname === "/"
                 ? slides[currentIndex].original_title
                 : slides[currentIndex].name}
             </h1>
-            <p className=" mt-1 md:mt-2 text-sm md:text-lg ">
-              {location.pathname === "/browse"
+            <p className=" mt-1 md:mt-4 text-sm md:text-lg ">
+              {location.pathname === "/"
                 ? slides[currentIndex]?.release_date
                   ? slides[currentIndex].release_date.split("-")[0]
                   : "N/A"
@@ -79,9 +79,9 @@ const Carousel = ({ interval }) => {
           <div className="flex gap-3 md:mt-8 mt-2">
             <Link
               className="flex items-center justify-center gap-2 px-2 py-1.5 md:px-3 md:py-2.5 lg:px-5 lg:py-3 bg-white hover:bg-white/80 text-black rounded-md text-xs md:text-sm lg:text-lg"
-              to={`/watch/${
-                location.pathname === "/browse" ? "movie" : "tvshow"
-              }/${slides[currentIndex].id}`}
+              to={`/watch/${location.pathname === "/" ? "movie" : "tvshow"}/${
+                slides[currentIndex].id
+              }`}
             >
               <FaPlay className="lg:h-[20px] md:h-[13px] h-[10px] lg:w-[20px] md:w-[15px] w-[10px]" />{" "}
               <span className="lg:text-[18px] md:text-[15px] text-[10px]">
@@ -114,5 +114,7 @@ const Carousel = ({ interval }) => {
     </div>
   );
 };
-
+Carousel.propTypes = {
+  interval: PropTypes.number.isRequired,
+};
 export default Carousel;

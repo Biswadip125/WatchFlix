@@ -15,12 +15,6 @@ import {
 } from "../redux/movieSlice.js";
 
 const MovieCard = ({ movie }) => {
-  if (!movie.poster_path) {
-    return;
-  }
-
-  const BACKEND_API_URL = import.meta.env.VITE_BACKEND_API_URL;
-
   const watchlist = useSelector((store) => store.movie.watchlist);
   const moviesList = useSelector((store) => store.movie.moviesList);
   const tvShowsList = useSelector((store) => store.movie.tvShowsList);
@@ -29,12 +23,15 @@ const MovieCard = ({ movie }) => {
   const searchPageContentType = useSelector(
     (store) => store.movie.searchPageContentType
   );
-
   const dispatch = useDispatch();
   const location = useLocation();
+  const [showAddtoWatchList, setShowAddToWatchList] = useState(false);
+  const BACKEND_API_URL = import.meta.env.VITE_BACKEND_API_URL;
+  if (!movie.poster_path) return;
+
   const contentType =
     location.pathname.includes("/movie") ||
-    location.pathname === "/browse" ||
+    location.pathname === "/" ||
     (location.pathname === "/search" && searchPageContentType === "movie")
       ? "movie"
       : location.pathname === "/tvshows" ||
@@ -42,8 +39,6 @@ const MovieCard = ({ movie }) => {
         (location.pathname === "/search" && searchPageContentType === "tv")
       ? "tvshow"
       : watchlistItem?.contentType;
-
-  const [showAddtoWatchList, setShowAddToWatchList] = useState(false);
 
   const fetchWatchlist = async (dispatch) => {
     try {
@@ -106,7 +101,7 @@ const MovieCard = ({ movie }) => {
         toast.success(res.data.message);
         await fetchWatchlist(dispatch);
         dispatch(
-          location.pathname === "/browse" ||
+          location.pathname === "/" ||
             location.pathname.includes("/movies") ||
             watchlistItem.contentType === "movie"
             ? setMoviesList(moviesList.filter((m) => m.id !== movie.id))
