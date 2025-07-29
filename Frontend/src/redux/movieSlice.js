@@ -16,6 +16,7 @@ const movieSlice = createSlice({
     watchlist: [],
     moviesList: [],
     tvShowsList: [],
+    details: null,
     menuToggle: false,
     searchPageContentType: null,
   },
@@ -66,6 +67,9 @@ const movieSlice = createSlice({
     setSearchPageContentType: (state, action) => {
       state.searchPageContentType = action.payload;
     },
+    setDetails: (state, action) => {
+      state.details = action.payload;
+    },
   },
 });
 
@@ -85,6 +89,7 @@ export const {
   setMoviesList,
   setTvShowsList,
   setSearchPageContentType,
+  setDetails,
 } = movieSlice.actions;
 
 export default movieSlice.reducer;

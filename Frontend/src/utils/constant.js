@@ -45,3 +45,7 @@ export const TV_SHOWS_VIDEO_URL = "https://api.themoviedb.org/3/tv/";
 export const MOVIE_DETAILS_URL = "https://api.themoviedb.org/3/movie/";
 
 export const TV_SHOWS_DETAILS_URL = "https://api.themoviedb.org/3/tv/";
+
+export const MOVIEDB_BASE_URL = "https://api.themoviedb.org/3";
+
+export const CAST_IMAGE_URL = "https://image.tmdb.org/t/p/w138_and_h175_face";

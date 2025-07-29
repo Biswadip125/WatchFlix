@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import Header from "./Header";
 import Carousel from "./Carousel";
 import Menu from "./Menu";
 import { useSelector } from "react-redux";
@@ -33,8 +32,6 @@ const TvShows = () => {
 
   return (
     <div className="bg-black w-full h-auto text-white">
-      <Header />
-
       {menuToggle && <Menu />}
       <Carousel interval={5000} />
       <TvShowsContainer />

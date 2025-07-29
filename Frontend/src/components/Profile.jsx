@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Header from "./Header";
+
 import { useSelector } from "react-redux";
 import Menu from "./Menu";
 import { useNavigate } from "react-router-dom";
@@ -18,8 +18,6 @@ const Profile = () => {
 
   return (
     <>
-      <Header />
-
       {menuToggle && <Menu />}
 
       {user && (

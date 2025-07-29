@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
   BACKDROP_IMAGE_URL,
@@ -8,7 +8,7 @@ import {
   TV_SHOWS_VIDEO_URL,
 } from "../utils/constant";
 import axios from "axios";
-import Header from "./Header";
+
 import { GrPrevious } from "react-icons/gr";
 import { GrNext } from "react-icons/gr";
 import ReactPlayer from "react-player";
@@ -17,7 +17,6 @@ import { formatReleaseDate } from "../utils/dateFunction";
 import WatchSkeleton from "./WatchSkeleton";
 import { useSelector } from "react-redux";
 import Menu from "./Menu";
-import ProfileMenu from "./ProfileMenu";
 
 const Watch = () => {
   const { id } = useParams();
@@ -28,9 +27,6 @@ const Watch = () => {
   const [content, setContent] = useState(null);
   const [similarContent, setSimilarContent] = useState(null);
 
-  const profileMenuToggle = useSelector(
-    (store) => store.movie.profileMenuToggle
-  );
   const menuToggle = useSelector((store) => store.movie.menuToggle);
 
   const increaseIndex = () => {
@@ -62,7 +58,7 @@ const Watch = () => {
       }
     };
     getTrailers();
-  }, [id]);
+  }, [id, contentType]);
 
   useEffect(() => {
     setLoading(true);
@@ -81,7 +77,7 @@ const Watch = () => {
       }
     };
     getSimilarContent();
-  }, [id]);
+  }, [id, contentType]);
 
   useEffect(() => {
     setLoading(true);
@@ -101,7 +97,7 @@ const Watch = () => {
       }
     };
     getMovieDetails();
-  }, [id]);
+  }, [id, contentType]);
 
   if (loading) {
     return (
@@ -115,7 +111,6 @@ const Watch = () => {
   if (!content) {
     return (
       <div className="w-full h-screen bg-black text-white flex flex-col">
-        <Header />
         <div className="flex-grow flex items-center justify-center">
           <h2 className="text-5xl font-bold text-center">Content Not Found</h2>
         </div>
@@ -126,7 +121,6 @@ const Watch = () => {
 
   return (
     <div className="bg-black h-auto w-full text-white relative">
-      <Header />
       <div className=" px-12 md:px-30 lg:px-52 py-[85px] w-full h-full ">
         {/*Video Player */}
 

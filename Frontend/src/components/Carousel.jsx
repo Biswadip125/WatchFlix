@@ -88,7 +88,12 @@ const Carousel = ({ interval }) => {
                 Play Now
               </span>
             </Link>
-            <Link className="flex items-center justify-center gap-2 px-2 py-1.5  md:px-3 md:py-2.5 lg:px-5 lg:py-3 bg-gray-500/70 hover:bg-gray-500 text-white rounded-md ">
+            <Link
+              to={`/${location.pathname === "/" ? "movie" : "tv"}/${
+                slides[currentIndex].id
+              }`}
+              className="flex items-center justify-center gap-2 px-2 py-1.5  md:px-3 md:py-2.5 lg:px-5 lg:py-3 bg-gray-500/70 hover:bg-gray-500 text-white rounded-md "
+            >
               <IoIosInformationCircleOutline className="lg:h-[26px] md:h-[19px] h-[15px] lg:w-[26px] md:w-[19px] w-[15px]" />{" "}
               <span className="lg:text-[18px] md:text-[15px] text-[10px]">
                 More Info

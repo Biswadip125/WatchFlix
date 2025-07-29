@@ -1,4 +1,3 @@
-import Header from "./Header";
 import SearchMovie from "./SearchMovie";
 import { useSelector } from "react-redux";
 import Menu from "./Menu";
@@ -8,7 +7,7 @@ const SearchContents = () => {
   return (
     <div className="bg-black text-white">
       {menuToggle && <Menu />}
-      <Header />
+
       <SearchMovie />
     </div>
   );

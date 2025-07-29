@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from "react";
-import Header from "./Header";
+
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import {
@@ -101,8 +101,6 @@ const Watchlist = () => {
           : "lg:h-screen"
       } h-screen bg-black text-white`}
     >
-      <Header />
-
       {menuToggle && <Menu />}
       <div className="h-3/4 w-full pt-24 md:pl-24 md:pr-24 pl-10 pr-10">
         <h1 className="text-3xl font-bold">Watchlist : Movies & Tv Shows</h1>

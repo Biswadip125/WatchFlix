@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import Header from "./Header";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Carousel from "./Carousel";
@@ -40,7 +39,6 @@ const Browse = () => {
   }, [fetchBackdropImages]);
   return (
     <div className="bg-black h-auto w-full  text-white relative">
-      <Header />
       {menuToggle && <Menu />}
       <Carousel interval={5000} />
       <MovieContainer />

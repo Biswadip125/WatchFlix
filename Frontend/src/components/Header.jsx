@@ -13,7 +13,7 @@ import ProfileMenu from "./ProfileMenu";
 import { useEffect } from "react";
 import { useRef } from "react";
 
-const Header = ({ buttonName, link }) => {
+const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.app.user);
   const location = useLocation();
@@ -21,8 +21,9 @@ const Header = ({ buttonName, link }) => {
   const profileMenuRef = useRef(null);
   const profileBtnRef = useRef(null);
   const dispatch = useDispatch();
-
   const BACKEND_API_URL = import.meta.env.VITE_BACKEND_API_URL;
+  const link = location.pathname === "/login" ? "/register" : "/login";
+  const buttonName = location.pathname === "/login" ? "Register" : "Login";
 
   const toggleHandler = () => {
     dispatch(setSearchMovieDetails({ searchInputValue: "", movies: "" }));
@@ -87,7 +88,7 @@ const Header = ({ buttonName, link }) => {
         id="header"
         className="absolute top-0 w-full z-50 bg-gradient-to-b from-black/70  to-transparent"
       >
-        <div className="container mx-auto  lg:px-12 px-2 py-1 md:py-2 lg:py-3 flex items-center justify-between ">
+        <div className="container mx-auto  lg:px-12 px-2 py-2 md:py-2 lg:py-3 flex items-center justify-between ">
           <div className="text-2xl font-bold">
             <Link to="/">
               <img
