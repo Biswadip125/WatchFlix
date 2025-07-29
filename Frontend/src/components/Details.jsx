@@ -138,7 +138,7 @@ const Details = () => {
                       </p>
                     </div>
                   </div>
-                  <p className="text-xl font-bold w-12">User Score</p>
+                  <p className="text-xl mt-1 font-bold w-12">User Score</p>
                 </div>
 
                 {/*Overview*/}
