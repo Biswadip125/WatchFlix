@@ -43,7 +43,7 @@ const HeroForm = ({ isLogin, link, apiLink, navigateLink }) => {
   };
   return (
     <>
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[url('https://ik.imagekit.io/qsm4jtc2a/Hero_and_logo_images/netflix-hero-image.png')] bg-no-repeat bg-cover">
+      <div className="min-h-screen flex flex-col items-center justify-center hero-bg bg-no-repeat bg-cover bg-center text-white">
         <div className="bg-black p-8 rounded-lg shadow-lg md:w-96 w-80 opacity-80 ">
           <h2 className="text-3xl font-semibold mb-4 text-center text-white">
             {isLogin ? "Sign In" : "Sign Up"}

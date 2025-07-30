@@ -82,13 +82,11 @@ const Header = () => {
       menu.style.left = `${iconRect.right - 160}px`; // adjust based on menu width
     }
   }, [profileMenuToggle]);
+
   return (
     <>
-      <header
-        id="header"
-        className="absolute top-0 w-full z-50 bg-gradient-to-b from-black/70  to-transparent"
-      >
-        <div className="container mx-auto  lg:px-12 px-2 py-2 md:py-2 lg:py-3 flex items-center justify-between ">
+      <header id="header" className="absolute top-0 w-full z-50 ">
+        <div className="container mx-auto  lg:px-32 px-2 py-2 md:py-2 lg:py-3 flex items-center justify-between ">
           <div className="text-2xl font-bold">
             <Link to="/">
               <img

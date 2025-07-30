@@ -57,8 +57,8 @@ const Details = () => {
 
   return (
     <div>
-      {details ? (
-        <div className="bg-black  w-full text-white  px-8 md:px-20 flex flex-col">
+      <div className="bg-black min-h-screen  w-full text-white  px-8 md:px-20 flex flex-col">
+        {details ? (
           <div className="min-h-screen flex flex-col py-24">
             <div className="flex  lg:flex-row flex-col lg:gap-20 gap-10  ">
               {/*Poster */}
@@ -142,7 +142,7 @@ const Details = () => {
                 </div>
 
                 {/*Overview*/}
-                <div className="mt-2 lg:max-w-3xl flex flex-col gap-2 ">
+                <div className="mt-2  flex flex-col gap-2 ">
                   <h3 className="text-gray-300 text-xl text-center lg:text-start font-semibold">
                     Overview
                   </h3>
@@ -243,10 +243,10 @@ const Details = () => {
               </div>
             </div>
           </div>
-        </div>
-      ) : (
-        <p>Nothing</p>
-      )}
+        ) : (
+          <p>Nothing</p>
+        )}
+      </div>
     </div>
   );
 };
