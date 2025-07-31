@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import Carousel from "./Carousel";
-import Menu from "./Menu";
+import Carousel from "../components/Carousel";
+import Menu from "../components/Menu";
 import { useSelector } from "react-redux";
 import useBackdropImages from "../hooks/useBackdropImages";
 import useAiringTodayTvshows from "../hooks/useAiringTodayTvshows";
-import TvShowsContainer from "./TvShowsContainer";
+import TvShowsContainer from "../components/TvShowsContainer";
 import useOnTheAirTvshows from "../hooks/useOnTheAirTvshows";
 import usePopularTvshows from "../hooks/usePopularTvshows";
 import useTopRatedTvshows from "../hooks/useTopRatedTvshows";

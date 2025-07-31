@@ -23,7 +23,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const BACKEND_API_URL = import.meta.env.VITE_BACKEND_API_URL;
   const link = location.pathname === "/login" ? "/register" : "/login";
-  const buttonName = location.pathname === "/login" ? "Register" : "Login";
+  const buttonName = location.pathname === "/login" ? "Sign Up" : "Sign In";
 
   const toggleHandler = () => {
     dispatch(setSearchMovieDetails({ searchInputValue: "", movies: "" }));
@@ -92,7 +92,7 @@ const Header = () => {
               <img
                 src="https://ik.imagekit.io/qsm4jtc2a/Hero_and_logo_images/watchflix-logo.png"
                 alt="watchflix_logo"
-                className="md:h-10 h-6 cursor-pointer"
+                className="md:h-10 h-7 cursor-pointer"
               />
             </Link>
           </div>
@@ -158,11 +158,10 @@ const Header = () => {
             </div>
           ) : (
             <div className="flex justify-center items-center">
-              <Link
-                className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-blue-300 md:w-[104px] w-20 md:h-[12] font-medium rounded-lg md:text-lg md:px-3 px-2 md:py-2.5 py-2 text-sm   dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800 cursor-pointer text-center"
-                to={link}
-              >
-                {buttonName}
+              <Link to={link}>
+                <button className="bg-red-600 hover:bg-red-700 text-white font-semibold py-1.5 md:py-2 px-4 text-sm rounded transition duration-200 ease-in-out hover:shadow-lg shadow ">
+                  {buttonName}
+                </button>
               </Link>
             </div>
           )}

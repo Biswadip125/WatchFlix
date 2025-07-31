@@ -9,8 +9,8 @@ import {
 } from "../utils/constant";
 
 import { setMoviesList, setTvShowsList } from "../redux/movieSlice";
-import MovieList from "./MovieList";
-import Menu from "./Menu";
+import MovieList from "../components/MovieList";
+import Menu from "../components/Menu";
 
 const Watchlist = () => {
   const watchlist = useSelector((store) => store.movie.watchlist);

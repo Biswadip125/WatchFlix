@@ -2,15 +2,15 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import useNowPlayingMovies from "../hooks/useNowPLayingMovies";
-import usePopularMovies from "../hooks/usePopularMovies";
-import useTopRatedMovies from "../hooks/useTopRatedMovies";
-import useUpcomingMovies from "../hooks/useUpcomingMovies";
-import MovieContainer from "./MovieContainer";
+import useNowPlayingMovies from "../hooks/useNowPLayingMovies.js";
+import usePopularMovies from "../hooks/usePopularMovies.js";
+import useTopRatedMovies from "../hooks/useTopRatedMovies.js";
+import useUpcomingMovies from "../hooks/useUpcomingMovies.js";
+import MovieContainer from "../components/MovieContainer.jsx";
 import useBackdropImages from "../hooks/useBackdropImages.js";
 import { fetchWatchlist } from "../utils/fetchWatchlist.js";
-import Menu from "./Menu.jsx";
-import Carousel from "./Carousel.jsx";
+import Menu from "../components/Menu.jsx";
+import Carousel from "../components/Carousel.jsx";
 
 const Browse = () => {
   const user = useSelector((store) => store.app.user);

@@ -1,6 +1,6 @@
-import SearchMovie from "./SearchMovie";
 import { useSelector } from "react-redux";
 import Menu from "./Menu";
+import SearchMovie from "../pages/SearchMovie";
 
 const SearchContents = () => {
   const menuToggle = useSelector((store) => store.movie.menuToggle);

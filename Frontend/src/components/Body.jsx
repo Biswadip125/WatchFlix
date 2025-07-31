@@ -4,19 +4,20 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import Browse from "./Browse";
-import Login from "./Login";
-import Register from "./Register";
-import Profile from "./Profile";
-import EditProfile from "./EditProfile";
-import Watch from "./Watch";
-import SearchContents from "./SearchContents";
-import TvShows from "./TvShows";
-import Watchlist from "./Watchlist";
-import { useSelector } from "react-redux";
-import Details from "./Details";
-import Header from "./Header";
 
+import { useSelector } from "react-redux";
+
+import Header from "./Header";
+import Login from "../pages/Login";
+import Browse from "../pages/Browse";
+import Register from "../pages/Register";
+import Profile from "../pages/Profile";
+import EditProfile from "../pages/EditProfile";
+import Watch from "../pages/Watch";
+import Details from "../pages/Details";
+import TvShows from "../pages/TvShows";
+import Watchlist from "../pages/Watchlist";
+import SearchContens from "./SearchContents";
 const Body = () => {
   const user = useSelector((store) => store.app.user);
   return (
@@ -34,7 +35,7 @@ const Body = () => {
           <Route path="/editprofile" element={<EditProfile />} />
           <Route path="/:contentType/:id" element={<Details />} />
           <Route path="/watch/:contentType/:id" element={<Watch />} />
-          <Route path="/search" element={<SearchContents />} />
+          <Route path="/search" element={<SearchContens />} />
           <Route path="/tvshows" element={<TvShows />} />
           <Route path="/watchlist" element={<Watchlist />} />
         </Routes>

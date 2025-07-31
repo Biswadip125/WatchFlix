@@ -6,7 +6,7 @@ import { BACKDROP_IMAGE_URL, CAST_IMAGE_URL } from "../utils/constant";
 import { setDetails } from "../redux/movieSlice";
 import { formatDate } from "../utils/formatDate";
 import { calculateMovieDuration } from "../utils/calculateMovieDuration";
-import CircleComponent from "./CircleComponent";
+import CircleComponent from "../components/CircleComponent";
 import { formatCurrency } from "../utils/formatCurrency";
 import { FaChevronRight, FaPlay } from "react-icons/fa";
 import useFetchCredits from "../hooks/useFetchCredits";

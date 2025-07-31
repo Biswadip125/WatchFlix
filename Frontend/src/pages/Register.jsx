@@ -1,4 +1,4 @@
-import HeroForm from "./HeroForm";
+import HeroForm from "../components/HeroForm";
 
 const Register = () => {
   return (

@@ -4,7 +4,7 @@ import { options, SEARCH_MOVIE_URL } from "../utils/constant";
 import { useDispatch, useSelector } from "react-redux";
 import { setSearchMovieDetails } from "../redux/searchSlice";
 
-import MovieList from "./MovieList";
+import MovieList from "../components/MovieList";
 import { setSearchPageContentType } from "../redux/movieSlice";
 
 const SearchMovie = () => {

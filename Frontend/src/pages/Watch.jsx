@@ -12,11 +12,11 @@ import axios from "axios";
 import { GrPrevious } from "react-icons/gr";
 import { GrNext } from "react-icons/gr";
 import ReactPlayer from "react-player";
-import MovieList from "./MovieList";
+import MovieList from "../components/MovieList";
 import { formatReleaseDate } from "../utils/dateFunction";
-import WatchSkeleton from "./WatchSkeleton";
+import WatchSkeleton from "../components/WatchSkeleton";
 import { useSelector } from "react-redux";
-import Menu from "./Menu";
+import Menu from "../components/Menu";
 
 const Watch = () => {
   const { id } = useParams();

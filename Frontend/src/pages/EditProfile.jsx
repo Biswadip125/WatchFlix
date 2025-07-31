@@ -5,7 +5,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { setUser } from "../redux/userSlice";
 import { useNavigate } from "react-router-dom";
-import Menu from "./Menu";
+import Menu from "../components/Menu";
 
 const EditProfile = () => {
   const user = useSelector((store) => store.app.user);
