@@ -94,7 +94,7 @@ const Carousel = ({ interval }) => {
               Play Now
             </Link>
             <Link
-              to={`details/${location.pathname === "/" ? "movie" : "tv"}/${
+              to={`/details/${location.pathname === "/" ? "movie" : "tv"}/${
                 slides[currentIndex]?.id
               }`}
               className="bg-gray-500/70 hover:bg-gray-500 text-white py-2 px-4 rounded-md flex items-center gap-2 text-sm md:text-base"

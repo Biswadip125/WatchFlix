@@ -11,6 +11,7 @@ import { formatCurrency } from "../utils/formatCurrency";
 import { FaChevronRight, FaPlay } from "react-icons/fa";
 import useFetchCredits from "../hooks/useFetchCredits";
 import { FaChevronLeft } from "react-icons/fa";
+import DetailsSkeleton from "../components/DetailsSkeleton";
 
 const Details = () => {
   const { id } = useParams();
@@ -57,7 +58,7 @@ const Details = () => {
 
   return (
     <div>
-      <div className="bg-black min-h-screen  w-full text-white  px-8 md:px-20 flex flex-col">
+      <div className="bg-black min-h-screen  w-full text-white  px-8 md:px-40 flex flex-col">
         {details ? (
           <div className="min-h-screen flex flex-col py-24">
             <div className="flex  lg:flex-row flex-col lg:gap-20 gap-10  ">
@@ -67,7 +68,7 @@ const Details = () => {
                   src={BACKDROP_IMAGE_URL + details?.poster_path}
                   alt="poster"
                   loading="lazy"
-                  className="max-h-[500px] h-full object-cover flex-shrink-0 rounded-lg"
+                  className="max-h-[530px] h-full object-cover flex-shrink-0 rounded-lg"
                 />
               </div>
               {/*Details Section */}
@@ -75,9 +76,13 @@ const Details = () => {
                 {/*Heading*/}
                 <div className="flex gap-2 items-center justify-center lg:justify-start">
                   <h1 className="md:text-3xl text-2xl font-bold ">
-                    {details?.title}{" "}
+                    {contentType === "movie" ? details?.title : details?.name}{" "}
                     <span className="md:text-3xl text-2xl">
-                      ({details?.release_date?.slice(0, 4)})
+                      (
+                      {contentType === "movie"
+                        ? details?.release_date?.slice(0, 4)
+                        : details?.first_air_date?.slice(0, 4)}
+                      )
                     </span>
                   </h1>
                 </div>
@@ -97,8 +102,12 @@ const Details = () => {
 
                   {/* Date + Country */}
                   <p className="whitespace-nowrap">
-                    {formatDate(details.release_date)} (
-                    {details.origin_country[0]})
+                    {formatDate(
+                      contentType === "movie"
+                        ? details?.release_date
+                        : details?.first_air_date
+                    )}{" "}
+                    ({details.origin_country[0]})
                   </p>
 
                   {/* Genres */}
@@ -116,15 +125,21 @@ const Details = () => {
                   </div>
 
                   {/* Runtime */}
-                  <p className="whitespace-nowrap">
-                    {calculateMovieDuration(details?.runtime)}
-                  </p>
+                  {details?.runtime && (
+                    <p className="whitespace-nowrap">
+                      {contentType === "movies"
+                        ? calculateMovieDuration(details?.runtime)
+                        : ""}
+                    </p>
+                  )}
                 </div>
 
                 {/*Tagline*/}
-                <div className="text-xl text-center lg:text-start text-gray-400 mt-6 italic ">
-                  {details?.tagline}
-                </div>
+                {details.tagline && (
+                  <div className="text-xl text-center lg:text-start text-gray-400 mt-6 italic ">
+                    {details?.tagline}
+                  </div>
+                )}
 
                 {/*User Score */}
                 <div className="flex items-center justify-center lg:justify-start gap-3">
@@ -244,7 +259,7 @@ const Details = () => {
             </div>
           </div>
         ) : (
-          <p>Nothing</p>
+          <DetailsSkeleton />
         )}
       </div>
     </div>
