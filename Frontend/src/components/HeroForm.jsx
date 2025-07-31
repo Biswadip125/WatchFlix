@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading, setUser } from "../redux/userSlice";
 import PropTypes from "prop-types";
+import { LuLoader2 } from "react-icons/lu";
 
 const HeroForm = ({ isLogin, link, apiLink, navigateLink }) => {
   const [fullname, setFullName] = useState("");
@@ -114,9 +115,19 @@ const HeroForm = ({ isLogin, link, apiLink, navigateLink }) => {
             </div>
             <button
               type="submit"
-              className="w-full py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-md  "
+              disabled={isLoading}
+              className="w-full py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-md disabled:opacity-70"
             >
-              {isLoading ? "Loading..." : isLogin ? "Sign In" : "Sign Up"}
+              {isLoading ? (
+                <span className="flex items-center justify-center gap-2">
+                  Please Wait{" "}
+                  <LuLoader2 className="animate-spin mt-1" size={20} />
+                </span>
+              ) : isLogin ? (
+                "Sign In"
+              ) : (
+                "Sign Up"
+              )}
             </button>
           </form>
           <div id="error" className="text-red-500 text-sm mt-4  hidden">

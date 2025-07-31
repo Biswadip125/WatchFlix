@@ -1,4 +1,3 @@
-import { RxCross2 } from "react-icons/rx";
 import { setMenuToggle } from "../redux/movieSlice";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -9,40 +8,34 @@ const Menu = () => {
     dispatch(setMenuToggle());
   };
   return (
-    <div className="h-full w-full bg-black absolute md:hidden block z-40 top-0 left-0 ">
-      <div className="flex justify-between items-center  text-white p-4">
-        <h1 className="font-bold text-lg">Explore More</h1>
-        <button onClick={cancelMenuHandler}>
-          <RxCross2 size={30} />
-        </button>
-      </div>
-      <div className="flex flex-col ">
-        <hr className="w-full border-1 border-t-gray-500/70" />
-        <Link
-          className=" h-16 pl-4 pt-2 flex items-center text-red-600"
-          to={"/"}
-          onClick={cancelMenuHandler}
-        >
-          Movies
-        </Link>
-        <hr className="w-full border-1 border-t-gray-500/70" />
-
-        <Link
-          className=" h-16 pl-4 pt-2  flex items-center text-red-600"
-          to={"/tvshows"}
-          onClick={cancelMenuHandler}
-        >
-          TV Shows
-        </Link>
-        <hr className="w-full border-1 border-t-gray-500/70" />
-        <Link
-          className=" h-16 pl-4 pt-2  flex items-center text-red-600"
-          to={"/watchlist"}
-          onClick={cancelMenuHandler}
-        >
-          Watchlist
-        </Link>
-        <hr className="w-full border-1 border-t-gray-500/70" />
+    <div className="fixed inset-0 z-40 bg-black/95 md:hidden animate-slide-in pt-20">
+      <div className="px-6 text-white">
+        <h1 className="text-xl font-bold mb-6 border-b border-gray-700 pb-2">
+          Explore More
+        </h1>
+        <nav className="space-y-4">
+          <Link
+            to="/"
+            onClick={cancelMenuHandler}
+            className="block text-lg text-red-500 hover:text-white transition-colors"
+          >
+            Movies
+          </Link>
+          <Link
+            to="/tvshows"
+            onClick={cancelMenuHandler}
+            className="block text-lg text-red-500 hover:text-white transition-colors"
+          >
+            TV Shows
+          </Link>
+          <Link
+            to="/watchlist"
+            onClick={cancelMenuHandler}
+            className="block text-lg text-red-500 hover:text-white transition-colors"
+          >
+            Watchlist
+          </Link>
+        </nav>
       </div>
     </div>
   );

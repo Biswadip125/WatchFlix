@@ -94,7 +94,7 @@ const Carousel = ({ interval }) => {
               Play Now
             </Link>
             <Link
-              to={`/${location.pathname === "/" ? "movie" : "tv"}/${
+              to={`details/${location.pathname === "/" ? "movie" : "tv"}/${
                 slides[currentIndex]?.id
               }`}
               className="bg-gray-500/70 hover:bg-gray-500 text-white py-2 px-4 rounded-md flex items-center gap-2 text-sm md:text-base"
@@ -106,7 +106,7 @@ const Carousel = ({ interval }) => {
         </div>
       </div>
       {/* Dots */}
-      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-40">
+      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-30">
         {slides?.map((_, index) => (
           <div
             key={index}

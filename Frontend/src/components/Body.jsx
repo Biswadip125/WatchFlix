@@ -33,7 +33,7 @@ const Body = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/editprofile" element={<EditProfile />} />
-          <Route path="/:contentType/:id" element={<Details />} />
+          <Route path="/details/:contentType/:id" element={<Details />} />
           <Route path="/watch/:contentType/:id" element={<Watch />} />
           <Route path="/search" element={<SearchContens />} />
           <Route path="/tvshows" element={<TvShows />} />

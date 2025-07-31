@@ -33,9 +33,11 @@ const ProfileMenu = forwardRef((props, ref) => {
     <div
       ref={ref}
       className={`absolute h-30 w-40  ${
-        location.pathname === "/search" || location.pathname.includes("/watch")
-          ? "bg-white/30"
-          : "bg-black/50"
+        location.pathname.includes("/search") ||
+        location.pathname.includes("/watch") ||
+        location.pathname.includes("/details")
+          ? "bg-black/20"
+          : "bg-white/10"
       } backdrop-blur-2xl z-50 rounded-lg`}
     >
       <div className="w-full h-full text-white flex flex-col items-center gap-2 px-2 py-2">

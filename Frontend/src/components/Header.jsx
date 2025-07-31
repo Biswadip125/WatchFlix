@@ -12,10 +12,12 @@ import { IoMenu } from "react-icons/io5";
 import ProfileMenu from "./ProfileMenu";
 import { useEffect } from "react";
 import { useRef } from "react";
+import { RxCross1 } from "react-icons/rx";
 
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.app.user);
+  const menuToggle = useSelector((store) => store.movie.menuToggle);
   const location = useLocation();
   const hideNavOnRoutes = ["/register", "/login"];
   const profileMenuRef = useRef(null);
@@ -152,9 +154,21 @@ const Header = () => {
               <button onClick={logoutHandler} className="md:block hidden">
                 <LuLogOut size={25} color={"white"} />
               </button>
-              <button className="block md:hidden " onClick={menuToggleHandler}>
-                <IoMenu size={25} color={"white"} />
-              </button>
+              {!menuToggle ? (
+                <button
+                  className="block md:hidden mt-1"
+                  onClick={menuToggleHandler}
+                >
+                  <IoMenu size={25} color={"white"} />
+                </button>
+              ) : (
+                <button
+                  className="block md:hidden mt-1"
+                  onClick={menuToggleHandler}
+                >
+                  <RxCross1 size={25} color={"white"} />
+                </button>
+              )}
             </div>
           ) : (
             <div className="flex justify-center items-center">
